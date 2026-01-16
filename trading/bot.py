@@ -1,6 +1,6 @@
 from confluent_kafka import Consumer, KafkaError
 import json
-from config.config import KAFKA_BOOTSTRAP, KAFKA_TOPIC, API_KEY, API_SECRET, QUANTITY, SYMBOL, COIN, logger
+from config.config import KAFKA_BOOTSTRAP, KAFKA_TOPIC, API_KEY, API_SECRET, QUANTITY, logger
 from account_manager import AccountManager
 from trading.strategies.rsi_strategy import RSIStrategy
 
@@ -58,18 +58,24 @@ try:
             print(f"RSI:{strategy.calculate_rsi()}")
             if action == 'BUY':
                 account.create_order('BUY', QUANTITY)
+                total_usdt = (account.get_balance("USDT") + account.get_balance("BTC") * close_price)
                 logger.info(
                 f"TRADE | BUY | price={close_price} | qty={QUANTITY} | "
-                f"rsi={strategy.calculate_rsi():.2f} | interval={interval} |"
-                f"usdt={account.get_balance("USDT"):.2f}"
+                f"rsi={strategy.calculate_rsi():.2f} | interval={interval} | "
+                f"btc={account.get_balance("BTC"):.5f} | interval={interval} | "
+                f"usdt={account.get_balance("USDT"):.2f} | interval={interval} | "
+                f"total_usdt={total_usdt:.2f}"
                 )
             elif action == 'SELL':
                 if account.can_sell(QUANTITY):
                     account.create_order('SELL', QUANTITY)
+                    total_usdt = (account.get_balance("USDT") + account.get_balance("BTC") * close_price)
                     logger.info(
                     f"TRADE | SELL | price={close_price} | qty={QUANTITY} | "
                     f"rsi={strategy.calculate_rsi():.2f} | interval={interval} | "
-                    f"usdt={account.get_balance("USDT"):.2f}"
+                    f"btc={account.get_balance("BTC"):.5f} | interval={interval} | "
+                    f"usdt={account.get_balance("USDT"):.2f} | interval={interval} | "
+                    f"total_usdt={total_usdt:.2f}"
                     )
                 else:
                     logger.warning("Not enough balance to sell")
