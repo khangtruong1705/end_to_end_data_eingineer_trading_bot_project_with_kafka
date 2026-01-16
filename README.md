@@ -11,9 +11,9 @@ A data engineering–focused project that streams real-time cryptocurrency marke
 - Chart real-time CLI (asciichartpy)
 
 ## Architecture
-!(architecture_img/project_diagram.jpeg)
+![Architecture Diagram](architecture_img/project_diagram.jpeg)
 
-!(architecture_img/kafka_ui.png)
+![Kafka UI](architecture_img/kafka_ui.png)
 
 
 ## How to Run
