@@ -1,4 +1,4 @@
-# Brazilian E-Commerce ETL Pipeline
+# Crypto Trading Streaming ETL Pipeline
 
 ## Description
 A data engineering–focused project that streams real-time cryptocurrency market data via WebSocket, processes it using Apache Kafka, and analyzes streaming data for technical indicators and visualization.
@@ -11,9 +11,9 @@ A data engineering–focused project that streams real-time cryptocurrency marke
 - Chart real-time CLI (asciichartpy)
 
 ## Architecture
-![Architecture Diagram](architecture/project_diagram.jpeg)
+![Architecture Diagram](architecture_img/project_diagram.jpeg)
 
-![Kafka UI](architecture/kafka_ui.png)
+![Kafka UI](architecture_img/kafka_ui.png)
 
 
 ## How to Run
