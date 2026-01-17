@@ -18,17 +18,17 @@ A data engineering–focused project that streams real-time cryptocurrency marke
 
 ## How to Run
 1. Clone the repository:  
-   `git clone https://github.com/your-username/your-repo.git`
-2. Start Docker services:  
+   `git clone https://github.com/khangtruong1705/end_to_end_data_eingineer_trading_bot_project_with_kafka.git`
+2. Start kafka service on your docker:  
    `docker-compose up -d`   
 3. Set up your configuration:  
-   Change the configuration to suit your needs
+   Change your configuration 
 4. Start binance streaming file:  
    `python -m data_stream.binance_producer`
 5. Start bot trading file:
    `python -m trading.bot`
 6. Start chart CLI file:
-   `python ui/usdt_chart.py`
+   `python ui/usdt_balance_chart.py`
 
 
 
